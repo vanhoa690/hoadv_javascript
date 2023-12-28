@@ -170,9 +170,9 @@ async function displayProductList() {
 }
 
 function showSpinner() {
-  document.querySelector(".spinner").classList.add("show");
+  document.querySelector("#spinner").classList.remove("hidden");
 }
 
 function hideSpinner() {
-  document.querySelector(".spinner").classList.remove("show");
+  document.querySelector("#spinner").classList.add("hidden");
 }
