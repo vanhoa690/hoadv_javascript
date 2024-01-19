@@ -1,4 +1,4 @@
-const API_URL = "https://fakestoreapi.com";
+const API_URL = 'https://fakestoreapi.com';
 
 async function init() {
   const productList = await fetchAPIData();
@@ -21,12 +21,12 @@ async function removeAPIProduct(id) {
   let productList = await fetchAPIData();
   hideSpinner();
   productList = productList.filter((product) => product.id !== id);
-  document.querySelector("tbody").remove();
+  document.querySelector('tbody').remove();
   displayProductList(productList);
 }
 
 async function displayProductList(productList) {
-  const tbody = document.createElement("tbody");
+  const tbody = document.createElement('tbody');
   tbody.innerHTML = `
   <thead
     class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
@@ -57,7 +57,8 @@ async function displayProductList(productList) {
       <td class="px-6 py-4">
         <div class="flex gap-3">
           <a
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+            href="./edit.html?id=${product.id}"
+            class="cursor-pointer font-medium text-blue-600 dark:text-blue-500 hover:underline"
             >Edit</a
           >
           <button onClick="handleDeleteProduct(${product.id})"
@@ -68,21 +69,21 @@ async function displayProductList(productList) {
     </tr>
       `
     )
-    .join("")}`;
+    .join('')}`;
 
-  document.getElementById("product-list").appendChild(tbody);
+  document.getElementById('product-list').appendChild(tbody);
 }
 
 async function handleDeleteProduct(id) {
-  if (window.confirm("Do you really remove product?")) {
+  if (window.confirm('Do you really remove product?')) {
     removeAPIProduct(id);
   }
 }
 
 function showSpinner() {
-  document.querySelector("#spinner").classList.remove("hidden");
+  document.querySelector('#spinner').classList.remove('hidden');
 }
 
 function hideSpinner() {
-  document.querySelector("#spinner").classList.add("hidden");
+  document.querySelector('#spinner').classList.add('hidden');
 }
